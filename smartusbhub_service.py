@@ -295,7 +295,7 @@ def main():
     parser = argparse.ArgumentParser(description='SmartUSBHub System Service')
     parser.add_argument('--port', help='Serial port name (e.g., /dev/ttyUSB0)')
     parser.add_argument('--host', default='localhost', help='HTTP server host (default: localhost)')
-    parser.add_argument('--http-port', type=int, default=80891, help='HTTP server port (default: 80891)'}]}}}
+    parser.add_argument('--http-port', type=int, default=80891, help='HTTP server port (default: 80891)')
     parser.add_argument('--log-level', default='INFO', help='Logging level (default: INFO)')
     
     args = parser.parse_args()
