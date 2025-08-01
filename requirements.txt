@@ -1,1 +1,4 @@
-pyserial>=3.5
+colorlog
+numpy
+pyserial
+requests
