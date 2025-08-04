@@ -7,7 +7,7 @@ Type=simple
 Restart=always
 RestartSec=5
 User=ubuntu
-ExecStart=/usr/bin/python3 /opt/smartusbhub/smartusbhub_service.py --host 0.0.0.0 --http-port 80891
+ExecStart=/usr/bin/python3 /opt/smartusbhub/smartusbhub_service.py --host 0.0.0.0 --http-port 18089
 WorkingDirectory=/opt/smartusbhub
 
 [Install]

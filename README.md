@@ -34,7 +34,7 @@
 ### 获取设备信息
 
 ```
-GET http://localhost:80891/device/info
+GET http://localhost:18089/device/info
 ```
 
 返回连接的 SmartUSBHub 设备的信息。
@@ -42,7 +42,7 @@ GET http://localhost:80891/device/info
 ### 获取通道电源状态
 
 ```
-GET http://localhost:80891/channel/power/{channel}
+GET http://localhost:18089/channel/power/{channel}
 ```
 
 返回指定通道（1-4）的电源状态。
@@ -50,7 +50,7 @@ GET http://localhost:80891/channel/power/{channel}
 ### 设置通道电源状态
 
 ```
-POST http://localhost:80891/channel/power?channels={channels}&state={state}
+POST http://localhost:18089/channel/power?channels={channels}&state={state}
 ```
 
 设置一个或多个通道的电源状态。
@@ -60,7 +60,7 @@ POST http://localhost:80891/channel/power?channels={channels}&state={state}
 ### 获取通道数据线状态
 
 ```
-GET http://localhost:80891/channel/dataline/{channel}
+GET http://localhost:18089/channel/dataline/{channel}
 ```
 
 返回指定通道（1-4）的数据线状态。
@@ -68,7 +68,7 @@ GET http://localhost:80891/channel/dataline/{channel}
 ### 设置通道数据线状态
 
 ```
-POST http://localhost:80891/channel/dataline?channels={channels}&state={state}
+POST http://localhost:18089/channel/dataline?channels={channels}&state={state}
 ```
 
 设置一个或多个通道的数据线状态。
@@ -79,22 +79,22 @@ POST http://localhost:80891/channel/dataline?channels={channels}&state={state}
 
 ```bash
 # 获取设备信息
-curl http://localhost:80891/device/info
+curl http://localhost:18089/device/info
 
 # 获取通道 1 的电源状态
-curl http://localhost:80891/channel/power/1
+curl http://localhost:18089/channel/power/1
 
 # 开启通道 1 和 2
-curl -X POST "http://localhost:80891/channel/power?channels=1,2&state=1"
+curl -X POST "http://localhost:18089/channel/power?channels=1,2&state=1"
 
 # 关闭通道 3
-curl -X POST "http://localhost:80891/channel/power?channels=3&state=0"
+curl -X POST "http://localhost:18089/channel/power?channels=3&state=0"
 
 # 获取通道 1 的数据线状态
-curl http://localhost:80891/channel/dataline/1
+curl http://localhost:18089/channel/dataline/1
 
 # 断开通道 2 的数据线连接
-curl -X POST "http://localhost:80891/channel/dataline?channels=2&state=0"
+curl -X POST "http://localhost:18089/channel/dataline?channels=2&state=0"
 ```
 
 ## 服务管理
@@ -177,7 +177,7 @@ python3 smartusbhub_service.py --help
 python3 smartusbhub_service.py
 
 # 使用自定义设置运行
-python3 smartusbhub_service.py --port /dev/ttyUSB0 --host 0.0.0.0 --http-port 80891
+python3 smartusbhub_service.py --port /dev/ttyUSB0 --host 0.0.0.0 --http-port 18089
 ```
 
 ## API 客户端示例
@@ -188,14 +188,14 @@ python3 smartusbhub_service.py --port /dev/ttyUSB0 --host 0.0.0.0 --http-port 80
 import requests
 
 # 获取设备信息
-response = requests.get('http://localhost:80891/device/info')
+response = requests.get('http://localhost:18089/device/info')
 print(response.json())
 
 # 开启通道 1
-response = requests.post('http://localhost:80891/channel/power?channels=1&state=1')
+response = requests.post('http://localhost:18089/channel/power?channels=1&state=1')
 print(response.json())
 
 # 获取通道 1 的电源状态
-response = requests.get('http://localhost:80891/channel/power/1)
+response = requests.get('http://localhost:18089/channel/power/1)
 print(response.json())
 ```
