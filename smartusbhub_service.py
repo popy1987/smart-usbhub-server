@@ -202,8 +202,23 @@ class SmartUSBHubRequestHandler(BaseHTTPRequestHandler):
                     self._send_error("Channel must be between 1 and 4")
                     return
                     
-                status = service.get_channel_power_status([channel])
-                self._send_response({'channel': channel, 'status': status})
+                max_retries = 3
+                retry_count = 0
+                status = None
+                
+                while status is None and retry_count < max_retries:
+                    status = service.get_channel_power_status([channel])
+                    retry_count += 1
+                    
+                    # Add a small delay between retries (optional)
+                    if status is None and retry_count < max_retries:
+                        import time
+                        time.sleep(1)
+                
+                if status is not None:
+                    self._send_response({'channel': channel, 'status': status})
+                else:
+                    self._send_error(f"Failed to get power status after {max_retries} retries", 500)
             except ValueError:
                 self._send_error("Invalid channel number")
             except Exception as e:
